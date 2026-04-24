@@ -1,2 +1,0 @@
-# Review - ClearCluse application architecture
-
