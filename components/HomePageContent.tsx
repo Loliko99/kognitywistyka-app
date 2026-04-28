@@ -44,14 +44,12 @@ export const HomePageContent = ({
     <div className="space-y-8">
       <section className="space-y-3">
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-400">
-          Ciekawostki Kognitywistyczne Dnia
-        </p>
+          Kognitywistyczne ciekawostki        </p>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Jedna naukowa ciekawostka dziennie. Bez szumu informacyjnego.
+          Codzienna dawka kognitywistycznej wiedzy!
         </h1>
         <p className="max-w-3xl text-slate-600 dark:text-slate-300">
-          Czytaj codziennie krotki fakt o umysle, percepcji i podejmowaniu decyzji. Tresci sa
-          konkretne, zweryfikowane i gotowe do zastosowania w zyciu.
+          Czytaj codziennie krótki fakt o umyśle, percepcji i podejmowaniu decyzji.
         </p>
       </section>
 
@@ -69,8 +67,10 @@ export const HomePageContent = ({
           </p>
         )}
       </section>
-
-      <section className="space-y-4">
+      
+     
+     
+      <section className="space-y-4 mt-32">
         <h2 className="text-xl font-semibold">Przegladaj po kategoriach</h2>
         <CategoryFilter
           categories={availableCategories}
