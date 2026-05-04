@@ -1,28 +1,32 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY || "");
+// Sprawdzamy czy klucz w ogóle istnieje
+const apiKey = process.env.GOOGLE_AI_KEY || "";
+const genAI = new GoogleGenerativeAI(apiKey);
 
 export async function GET() {
   try {
+    if (!apiKey) {
+      return NextResponse.json({ error: "Brak klucza API w ustawieniach Vercel!" }, { status: 500 });
+    }
+
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = `Jesteś ekspertem kognitywistyki. Wygeneruj ciekawostkę w formacie JSON. 
-    Wymagane pola: title, hook, explanation, example, category. 
-    Kategorie do wyboru: Percepcja, Neurobiologia, AI i umysł, Psychologia poznawcza. 
-    Użyj języka polskiego. Zwróć TYLKO czysty obiekt JSON.`;
+    const prompt = "Wygeneruj jedną ciekawostkę kognitywistyczną w formacie JSON z polami: title, hook, explanation, example, category.";
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const text = response.text();
+    const text = response.text().replace(/```json/g, "").replace(/```/g, "").trim();
     
-    // Czyścimy tekst (Gemini czasem dodaje ```json ... ```)
-    const cleanJson = text.replace(/```json/g, "").replace(/```/g, "").trim();
-    const data = JSON.parse(cleanJson);
-
-    return NextResponse.json(data);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Błąd Gemini" }, { status: 500 });
+    return NextResponse.json(JSON.parse(text));
+  } catch (error: any) {
+    // KLUCZOWE: Wyświetlamy co dokładnie boli Gemini
+    console.error("Błąd Gemini:", error);
+    return NextResponse.json({ 
+      error: "Błąd Gemini", 
+      message: error.message, // Tu pojawi się konkretny powód (np. Invalid API Key)
+      stack: error.stack?.split('\n')[0] 
+    }, { status: 500 });
   }
 }
