@@ -6,7 +6,7 @@ export const factsData: Fact[] = [
     title: "Efekt Stroopa spowalnia Twoją reakcję",
     hook: "Gdy kolor tekstu nie pasuje do słowa, mózg potrzebuje dodatkowego czasu.",
     explanation:
-      "Efekt Stroopa pokazuje konflikt miedzy automatycznym czytaniem słów a kontrolowanym nazywaniem koloru. To klasyczny test uwagi wykonawczej.",
+      "Efekt Stroopa pokazuje konflikt między automatycznym czytaniem słów a kontrolowanym nazywaniem koloru. To klasyczny test uwagi wykonawczej.",
     example:
       "Słowo 'CZERWONY' napisane zieloną czcionką powoduje więcej błędów przy szybkim odpowiadaniu.",
     whyItMatters:
@@ -18,7 +18,7 @@ export const factsData: Fact[] = [
     title: "Możesz nie zauważyć oczywistej rzeczy",
     hook: "Silne skupienie na jednym zadaniu potrafi 'wyłączyć' inne bodzce.",
     explanation:
-      "Ślepota nieuwagi pojawia sie, gdy zasoby uwagi sa zajęte. Mózg filtruje informacje, nawet jeśli sa one wyrazne sensorycznie.",
+      "Ślepota nieuwagi pojawia się, gdy zasoby uwagi są zajęte. Mózg filtruje informacje, nawet jeśli są one wyraźne sensorycznie.",
     example:
       "Podczas liczenia podań w eksperymencie część osób nie widzi osoby w kostiumie goryla przechodzącej przez scene.",
     whyItMatters:
@@ -68,7 +68,7 @@ export const factsData: Fact[] = [
     explanation:
       "Pamięć robocza przechowuje ograniczoną liczbę elementów przez krótki czas. Przeciążenie pogarsza jakość myślenia.",
     example:
-      "Przy próbie zapamiętania kilku numerów i jednoczesnym pisaniu rosnie liczba pomyłek.",
+      "Przy próbie zapamiętania kilku numerów i jednoczesnym pisaniu rośnie liczba pomyłek.",
     whyItMatters:
       "Dlatego dzielenie zadań na kroki i notowanie odciąża mózg i zwiększa skuteczność.",
     category: "neurobiologia",
@@ -80,7 +80,7 @@ export const factsData: Fact[] = [
     explanation:
       "Efekt ramowania pokazuje, że decyzje zależne są od kontekstu językowego, np. zysk vs strata.",
     example:
-      "Ludzie chetniej wybierają leczenie z '90% przezyc' niz z '10% smiertelnosci'.",
+      "Ludzie chętniej wybierają leczenie z '90% przeżyć' niż z '10% śmiertelności'.",
     whyItMatters:
       "Warto analizować decyzje po przepisaniu problemu w kilku wariantach językowych.",
     category: "psychologia_poznawcza",
@@ -88,13 +88,13 @@ export const factsData: Fact[] = [
   {
     id: "predykcyjne-postrzeganie",
     title: "Mózg zgaduje, zanim zobaczysz",
-    hook: "Percepcja to połączenie sygnalu z oczu i przewidywan mózgu.",
+    hook: "Percepcja to połączenie sygnału z oczu i przewidywań mózgu.",
     explanation:
       "W modelach predykcyjnych mózg stale tworzy hipotezy o świecie i koryguje je błędem predykcji.",
     example:
       "W niejednoznacznym obrazie najpierw widzisz to, czego się spodziewasz po kontekście.",
     whyItMatters:
-      "To wyjaśnia, czemu oczekiwania i nastroj mogą zniekształcać odbiór rzeczywistości.",
+      "To wyjaśnia, czemu oczekiwania i nastrój mogą zniekształcać odbiór rzeczywistości.",
     category: "percepcja",
   },
   {
@@ -116,7 +116,7 @@ export const factsData: Fact[] = [
     explanation:
       "Po serii decyzji zasoby samokontroli i uwagi maleją, co sprzyja wyborom impulsywnym lub unikaniu decyzji.",
     example:
-      "Pod koniec dnia łatwiej wybrać najprostsza opcje, nawet jeśli nie jest najlepsza.",
+      "Pod koniec dnia łatwiej wybrać najprostszą opcję, nawet jeśli nie jest najlepsza.",
     whyItMatters:
       "Najważniejsze decyzje warto planować na moment najwyższej energii poznawczej.",
     category: "psychologia_poznawcza",
@@ -124,9 +124,9 @@ export const factsData: Fact[] = [
   {
     id: "model-jezykowy-statystyka",
     title: "AI nie myśli jak człowiek",
-    hook: "Modele językowe przewiduja tokeny, a nie rozumieja świata jak ludzie.",
+    hook: "Modele językowe przewidują tokeny, a nie rozumieją świata jak ludzie.",
     explanation:
-      "LLM-y uczą się wzorców statystycznych w tekscie. Moga byc bardzo skuteczne językowo bez ludzkiej intencjonalnosci.",
+      "LLM-y uczą się wzorców statystycznych w tekście. Mogą być bardzo skuteczne językowo bez ludzkiej intencjonalności.",
     example:
       "Model generuje poprawną odpowiedź, ale potrafi też pewnie podać nieprawdę, gdy brakuje danych.",
     whyItMatters:
@@ -140,7 +140,7 @@ export const factsData: Fact[] = [
     explanation:
       "Badania nad krukowatymi wskazuja zaawansowane strategie społeczne i pamięć epizodyczna podobna funkcjonalnie do planowania.",
     example:
-      "Ptak, który był wczesniej okradany, pozniej zmienia kryjówke zapasow, gdy czuje obserwacje.",
+      "Ptak, który był wcześniej okradany, później zmienia kryjówkę zapasów, gdy czuje obserwację.",
     whyItMatters:
       "Rozszerza rozumienie inteligencji poza człowieka i pokazuje, że poznanie ma wiele form ewolucyjnych.",
     category: "zwierzeta",

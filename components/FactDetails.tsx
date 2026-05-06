@@ -8,9 +8,9 @@ const categoryLabels: Record<Fact["category"], string> = {
   percepcja: "Percepcja",
   psychologia_poznawcza: "Psychologia poznawcza",
   neurobiologia: "Neurobiologia",
-  ai_i_umysl: "AI i umysl",
-  zwierzeta: "Poznanie zwierzat",
-  filozofia_umyslu: "Filozofia umyslu",
+  ai_i_umysl: "AI i umysł",
+  zwierzeta: "Poznanie zwierząt",
+  filozofia_umyslu: "Filozofia umysłu",
 };
 
 export const FactDetails = ({ fact }: FactDetailsProps) => {
@@ -25,21 +25,21 @@ export const FactDetails = ({ fact }: FactDetailsProps) => {
       <section className="space-y-4">
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Wyjasnienie
+            Wyjaśnienie
           </h2>
           <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.explanation}</p>
         </div>
 
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Przyklad
+            Przykład
           </h2>
           <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.example}</p>
         </div>
 
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Dlaczego to wazne
+            Dlaczego to ważne
           </h2>
           <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.whyItMatters}</p>
         </div>

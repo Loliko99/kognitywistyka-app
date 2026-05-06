@@ -12,9 +12,9 @@ const categoryLabels: Record<Fact["category"], string> = {
   percepcja: "Percepcja",
   psychologia_poznawcza: "Psychologia poznawcza",
   neurobiologia: "Neurobiologia",
-  ai_i_umysl: "AI i umysl",
-  zwierzeta: "Poznanie zwierzat",
-  filozofia_umyslu: "Filozofia umyslu",
+  ai_i_umysl: "AI i umysł",
+  zwierzeta: "Poznanie zwierząt",
+  filozofia_umyslu: "Filozofia umysłu",
 };
 
 export const FactCard = ({ fact, hasDetailsPage = true, onReadMore }: FactCardProps) => {
@@ -30,7 +30,7 @@ export const FactCard = ({ fact, hasDetailsPage = true, onReadMore }: FactCardPr
           href={`/fact/${fact.id}`}
           className="text-sm font-semibold text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
         >
-          Czytaj cala ciekawostke
+          Czytaj całą ciekawostkę
         </Link>
       ) : (
         <button

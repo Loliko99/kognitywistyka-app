@@ -1,18 +1,24 @@
 # Developer
 
 ## Standardy kodu
-- Używaj TypeScript do typowania komponentów i danych.
-- Stosuj porządek importów i czytelne nazwy funkcji.
-- Unikaj logiki biznesowej w komponentach prezentacyjnych.
-
-## Konwencje
-- `domain/fact.ts` definiuje typ `Fact` i listę kategorii.
-- `lib/facts.ts` zawiera logikę biznesową dla faktów.
-- `components/` zawiera UI i prezenację.
-- `app/` zawiera routing i strony.
+- Kod piszemy w TypeScript.
+- Komponenty React mają jawne typy propsów.
+- Logika domenowa powinna trafiać do `lib/`, a model do `domain/`.
+- Dane statyczne są zgodne z `Fact`.
+- Widoczne teksty w UI piszemy po polsku z polskimi znakami.
 
 ## Workflow implementacji
-1. Przeczytaj plan w `docs/plans/PLAN_random_fact.md`.
-2. Zaimplementuj funkcję zgodnie z zakresem planu.
-3. Dodaj testy dla logiki biznesowej.
-4. Zaktualizuj `implemented_plans.md` i `implemented_features.md`.
+1. Sprawdzić, czy istnieje plan w `docs/plans`.
+2. Jeśli nie istnieje, najpierw utworzyć plan.
+3. Implementować tylko zakres opisany w planie.
+4. Uruchomić `npm.cmd run lint`.
+5. Uruchomić `npm.cmd run build`.
+6. Zaktualizować `implemented_plans.md`.
+7. Zaktualizować `implemented_features.md`.
+8. Zrobić commit i push.
+
+## Konwencje
+- Nazwy planów: `PLAN_<nazwa_funkcjonalnosci>.md`.
+- Slugi faktów: małe litery, myślniki, bez polskich znaków.
+- Kategorie: wyłącznie wartości z `domain/fact.ts`.
+- API nie zwraca technicznych błędów użytkownikowi, jeśli możliwy jest fallback.

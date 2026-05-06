@@ -18,14 +18,14 @@ const fallbackFact = (): GeneratedFact => {
 
   if (!fact) {
     return {
-      title: "Neuroplastycznosc",
-      hook: "Mozg zmienia swoje polaczenia przez cale zycie.",
+      title: "Neuroplastyczność",
+      hook: "Mózg zmienia swoje połączenia przez całe życie.",
       explanation:
-        "Neuroplastycznosc oznacza, ze doswiadczenia, nauka i trening moga wzmacniac lub oslabiac wybrane sieci neuronalne.",
+        "Neuroplastyczność oznacza, że doświadczenia, nauka i trening mogą wzmacniać lub osłabiać wybrane sieci neuronalne.",
       example:
-        "Regularna nauka gry na instrumencie moze poprawiac koordynacje i sluch, bo mozg dostraja obszary odpowiedzialne za te umiejetnosci.",
+        "Regularna nauka gry na instrumencie może poprawiać koordynację i słuch, bo mózg dostraja obszary odpowiedzialne za te umiejętności.",
       whyItMatters:
-        "To pokazuje, ze uczenie sie i rehabilitacja moga realnie zmieniac sposob dzialania ukladu nerwowego.",
+        "To pokazuje, że uczenie się i rehabilitacja mogą realnie zmieniać sposób działania układu nerwowego.",
       category: "neurobiologia",
     };
   }
@@ -97,7 +97,7 @@ export async function GET() {
       },
     });
 
-    const prompt = `Wygeneruj jedna ciekawa, konkretna i malo oczywista ciekawostke kognitywistyczna po polsku. Nie powtarzaj ogolnikow. Zwroc wylacznie poprawny JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole title ma byc krotkie. Pole hook ma miec jedno zdanie. Pola explanation, example i whyItMatters maja tworzyc rozszerzona wersje ciekawostki. Pole category musi miec jedna z wartosci: ${CATEGORIES.join(", ")}.`;
+    const prompt = `Wygeneruj jedną ciekawą, konkretną i mało oczywistą ciekawostkę kognitywistyczną po polsku. Nie powtarzaj ogólników. Zwróć wyłącznie poprawny JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole title ma być krótkie. Pole hook ma mieć jedno zdanie. Pola explanation, example i whyItMatters mają tworzyć rozszerzoną wersję ciekawostki. Pole category musi mieć jedną z wartości: ${CATEGORIES.join(", ")}.`;
 
     const result = await withTimeout(model.generateContent(prompt), generationTimeoutMs);
     const response = await result.response;

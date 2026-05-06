@@ -1,79 +1,61 @@
-# Daily Spark - Ciekawostki Kognitywistyczne Dnia
+# Daily Spark - Ciekawostki Kognitywistyczne
 
-Production-ready aplikacja Next.js serwujaca codzienna ciekawostke naukowa o poznaniu i umysle.
+Aplikacja Next.js prezentująca ciekawostki o poznaniu, mózgu i umyśle. Strona łączy statyczne archiwum faktów z opcjonalnym generowaniem nowych ciekawostek przez AI.
 
 ## Wymagania
-
 - Node.js 20+
 - npm 10+
 
 ## Instalacja
-
 ```bash
 npm install
 ```
 
-## Uruchomienie lokalnie
-
+## Uruchomienie lokalne
 ```bash
 npm run dev
 ```
 
-Aplikacja bedzie dostepna pod adresem [http://localhost:3000](http://localhost:3000).
+Aplikacja będzie dostępna pod adresem [http://localhost:3000](http://localhost:3000).
 
 ## Build produkcyjny
-
 ```bash
 npm run build
 npm run start
 ```
 
-## Jak dzialaja dane
+## Zmienna środowiskowa
+Generowanie AI wymaga zmiennej:
 
-- Dane sa lokalne i znajduja sie w `data/facts.ts`.
-- Kazda ciekawostka ma scisly model `Fact` zdefiniowany w `domain/fact.ts`.
-- Dane sa walidowane przez helpery w `lib/validation.ts`.
-- Logika pobierania, filtrowania i wyboru ciekawostki jest w `lib/facts.ts`.
-
-## Jak dodac nowa ciekawostke
-
-1. Otworz `data/facts.ts`.
-2. Dodaj nowy obiekt zgodny z interfejsem `Fact`:
-   - `id` (unikalny slug),
-   - `title`,
-   - `hook`,
-   - `explanation`,
-   - `example`,
-   - `whyItMatters`,
-   - `category`.
-3. Zapisz plik i uruchom:
-
-```bash
-npm run lint
-npm run build
+```text
+GOOGLE_AI_KEY
 ```
 
-Jesli walidacja modelu przejdzie, nowa ciekawostka bedzie dostepna automatycznie.
+Na Vercel ustaw ją w `Project Settings -> Environment Variables`. Jeśli klucz nie jest dostępny albo Gemini zwróci błąd, aplikacja użyje fallbacku z lokalnej bazy faktów.
 
-## Architektura projektu
-
-Warstwy:
-
-- `app/` - routing i strony (App Router)
-- `components/` - UI (komponenty prezentacyjne i interakcyjne)
-- `domain/` - typy i model domenowy
-- `data/` - zrodlo danych
-- `lib/` - logika biznesowa i walidacja
-
-Najwazniejsze funkcje logiki:
-
-- `getFactById(id)`
-- `getFactsByCategory(category)`
-- `getRandomFact()`
-- `getFactOfTheDay(date)` - deterministyczna ciekawostka dnia (ten sam wynik dla tego samego dnia)
+## Jak działają dane
+- Statyczne dane są w `data/facts.ts`.
+- Model ciekawostki jest w `domain/fact.ts`.
+- Dane są walidowane przez `lib/validation.ts`.
+- Logika pobierania, filtrowania i wyboru ciekawostki jest w `lib/facts.ts`.
+- Ciekawostki AI są dynamiczne i nie są zapisywane na stałe.
 
 ## Trasy
+- `/` - strona główna z faktem dnia, archiwum i losowaniem AI.
+- `/fact/[id]` - szczegóły statycznej ciekawostki.
+- `/api/fact` - endpoint generujący ciekawostkę AI lub fallback.
 
-- `/` - strona glowna z ciekawostka dnia, filtrem kategorii i losowaniem
-- `/fact/[id]` - szczegoly ciekawostki i podobne wpisy
-- `not-found` - bezpieczny fallback dla nieprawidlowego ID
+## Spec Driven Development
+Dokumentacja SDD znajduje się w `docs/`.
+
+Najważniejsze pliki:
+- `docs/plans/PLAN_random_fact.md`
+- `docs/plans/PLAN_ai_generated_fact.md`
+- `implemented_plans.md`
+- `implemented_features.md`
+
+## Kontrola jakości
+```bash
+npm.cmd run lint
+npm.cmd run build
+```

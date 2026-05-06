@@ -12,9 +12,9 @@ const categoryLabels: Record<Category, string> = {
   percepcja: "Percepcja",
   psychologia_poznawcza: "Psychologia poznawcza",
   neurobiologia: "Neurobiologia",
-  ai_i_umysl: "AI i umysl",
-  zwierzeta: "Poznanie zwierzat",
-  filozofia_umyslu: "Filozofia umyslu",
+  ai_i_umysl: "AI i umysł",
+  zwierzeta: "Poznanie zwierząt",
+  filozofia_umyslu: "Filozofia umysłu",
 };
 
 export const CategoryFilter = ({
@@ -33,7 +33,7 @@ export const CategoryFilter = ({
             : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
         }`}
       >
-        Wszystkie
+      Wszystkie
       </button>
 
       {categories.map((category) => (

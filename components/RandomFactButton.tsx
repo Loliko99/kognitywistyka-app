@@ -10,7 +10,7 @@ interface RandomFactButtonProps {
 export const RandomFactButton = ({ onPick, disabled = false }: RandomFactButtonProps) => {
   return (
     <Button type="button" onClick={onPick} disabled={disabled}>
-      Losuj ciekawostke
+      Losuj ciekawostkę
     </Button>
   );
 };
