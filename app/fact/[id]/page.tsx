@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FactDetails } from "@/components/FactDetails";
+import { getGeneratedFactById, isAiFactId } from "@/lib/ai-facts";
 import { getFactById } from "@/lib/facts";
 
 interface FactDetailsPageProps {
@@ -10,14 +11,17 @@ interface FactDetailsPageProps {
 
 export default async function FactDetailsPage({ params }: FactDetailsPageProps) {
   const { id } = await params;
-  const fact = getFactById(id);
+  const staticFact = getFactById(id);
+  const generatedFact = staticFact ? null : await getGeneratedFactById(id);
+  const fact = staticFact ?? generatedFact;
+  const generatedByAi = Boolean(generatedFact || isAiFactId(id));
 
   if (!fact) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center p-24 text-center">
         <h1 className="text-3xl font-bold mb-4">Nie znaleziono ciekawostki</h1>
         <p className="text-lg text-slate-600 mb-8">
-          Ten adres nie pasuje do zadnej ciekawostki zapisanej w archiwum.
+          Ten adres nie pasuje do żadnej ciekawostki zapisanej w archiwum.
         </p>
         <Link href="/" className="rounded-lg bg-blue-600 px-6 py-2 text-white font-semibold hover:bg-blue-700">
           Wróć na stronę główną
@@ -32,7 +36,7 @@ export default async function FactDetailsPage({ params }: FactDetailsPageProps) 
         <Link href="/" className="text-blue-600 hover:underline mb-8 inline-block">
           &larr; Powrót
         </Link>
-        <FactDetails fact={fact} />
+        <FactDetails fact={fact} generatedByAi={generatedByAi} />
       </div>
     </div>
   );

@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:build": "tsc -p tsconfig.test.json",
+    "test": "npm.cmd run test:build && node .tmp-tests/tests/run-tests.js"
   },
   "keywords": [],
   "author": "",

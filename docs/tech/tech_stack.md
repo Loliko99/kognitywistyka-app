@@ -6,6 +6,7 @@
 - `TypeScript` - typowanie domeny i kontraktów danych.
 - `Tailwind CSS` - stylowanie UI.
 - `@google/generative-ai` - integracja z Gemini.
+- `Supabase REST API` - opcjonalny trwały zapis ciekawostek AI.
 - `Vercel` - hosting i automatyczny deploy po pushu do GitHuba.
 
 ## Uzasadnienie wyborów
@@ -15,9 +16,9 @@
 - Vercel upraszcza deployment i obsługę zmiennych środowiskowych.
 
 ## Ograniczenia technologiczne
-- Brak trwałego zapisu faktów AI.
-- Brak bazy danych.
+- Trwały zapis faktów AI wymaga konfiguracji Supabase.
 - Gemini wymaga zmiennej środowiskowej `GOOGLE_AI_KEY`.
+- Supabase wymaga zmiennych `SUPABASE_URL` i `SUPABASE_SERVICE_ROLE_KEY`.
 - Endpoint AI musi mieć fallback, ponieważ usługa zewnętrzna może zwrócić błąd albo przekroczyć limit czasu.
 
 ## Konwencje projektowe
@@ -31,5 +32,6 @@
 ## Komendy kontrolne
 ```bash
 npm.cmd run lint
+npm.cmd test
 npm.cmd run build
 ```

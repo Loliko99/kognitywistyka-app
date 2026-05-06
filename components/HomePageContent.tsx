@@ -9,7 +9,10 @@ import { RandomFactButton } from "@/components/RandomFactButton";
 import type { Category, Fact } from "@/domain/fact";
 import { getFactsByCategory } from "@/lib/facts";
 
-type ApiFact = Omit<Fact, "id">;
+interface ApiFact extends Fact {
+  readonly generatedByAi: boolean;
+  readonly persisted: boolean;
+}
 
 interface HomePageContentProps {
   readonly allFacts: readonly Fact[];
@@ -24,6 +27,8 @@ export const HomePageContent = ({
 }: HomePageContentProps) => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
   const [highlightedFact, setHighlightedFact] = useState<Fact | null>(factOfTheDay);
+  const [isHighlightedGeneratedByAi, setIsHighlightedGeneratedByAi] = useState(false);
+  const [hasHighlightedDetailsPage, setHasHighlightedDetailsPage] = useState(true);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [showAiDetails, setShowAiDetails] = useState(false);
 
@@ -47,7 +52,7 @@ export const HomePageContent = ({
       const aiData = (await response.json()) as ApiFact;
       
       const newFact: Fact = {
-        id: `ai-${Date.now()}`,
+        id: aiData.id,
         title: aiData.title,
         hook: aiData.hook,
         explanation: aiData.explanation,
@@ -57,18 +62,20 @@ export const HomePageContent = ({
       };
 
       setHighlightedFact(newFact);
+      setIsHighlightedGeneratedByAi(aiData.generatedByAi);
+      setHasHighlightedDetailsPage(!aiData.generatedByAi || aiData.persisted);
     } catch (error) {
       console.error("AI Error:", error);
       if (allFacts.length > 0) {
         const randomIndex = Math.floor(Math.random() * allFacts.length);
         setHighlightedFact(allFacts[randomIndex] ?? null);
+        setIsHighlightedGeneratedByAi(false);
+        setHasHighlightedDetailsPage(true);
       }
     } finally {
       setIsAiLoading(false);
     }
   };
-
-  const isAiFact = highlightedFact?.id.startsWith("ai-") ?? false;
 
   return (
     <div className="space-y-8">
@@ -82,7 +89,7 @@ export const HomePageContent = ({
         <p className="max-w-3xl text-slate-600 dark:text-slate-300">
           {isAiLoading 
             ? "Sztuczna inteligencja generuje nowy fakt..." 
-            : "Kliknij przycisk poniżej, aby AI wygenerowało unikalną ciekawostkę."}
+            : "Kliknij przycisk poniżej, aby AI wygenerowało nową, unikalną ciekawostkę."}
         </p>
       </section>
 
@@ -99,12 +106,13 @@ export const HomePageContent = ({
           <div className={isAiLoading ? "animate-pulse opacity-50" : ""}>
             <FactCard
               fact={highlightedFact}
-              hasDetailsPage={!isAiFact}
+              generatedByAi={isHighlightedGeneratedByAi}
+              hasDetailsPage={hasHighlightedDetailsPage}
               onReadMore={() => setShowAiDetails((current) => !current)}
             />
-            {isAiFact && showAiDetails && (
+            {isHighlightedGeneratedByAi && !hasHighlightedDetailsPage && showAiDetails && (
               <div className="mt-6">
-                <FactDetails fact={highlightedFact} />
+                <FactDetails fact={highlightedFact} generatedByAi />
               </div>
             )}
           </div>

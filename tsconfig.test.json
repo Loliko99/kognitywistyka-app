@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "noEmit": false,
+    "outDir": ".tmp-tests",
+    "rootDir": ".",
+    "types": ["node"],
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "tests/**/*.ts",
+    "app/api/fact/route.ts",
+    "lib/**/*.ts",
+    "data/**/*.ts",
+    "domain/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

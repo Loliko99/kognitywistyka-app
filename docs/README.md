@@ -8,6 +8,7 @@ Ten katalog opisuje projekt zgodnie z podejściem Spec Driven Development.
 - `tech/` - stos technologiczny i konwencje.
 - `plans/` - małe plany funkcjonalności.
 - `roles/` - perspektywy Product Ownera, UX/UI, Architekta, Developera i Testera.
+- `tech/supabase_ai_facts.sql` - schemat tabeli dla trwałych ciekawostek AI.
 
 ## Workflow plan
 Wejście:

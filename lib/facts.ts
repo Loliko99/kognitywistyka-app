@@ -1,6 +1,6 @@
-import { factsData } from "@/data/facts";
-import { CATEGORIES, type Category, type Fact } from "@/domain/fact";
-import { isCategory, validateFactsOrThrow } from "@/lib/validation";
+import { factsData } from "../data/facts";
+import { CATEGORIES, type Category, type Fact } from "../domain/fact";
+import { isCategory, validateFactsOrThrow } from "./validation";
 
 const safeFactsSource = (): Fact[] => {
   return validateFactsOrThrow(factsData);

@@ -22,5 +22,6 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.tmp-tests
 
 node_modules

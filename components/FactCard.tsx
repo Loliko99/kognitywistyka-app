@@ -4,6 +4,7 @@ import type { Fact } from "@/domain/fact";
 
 interface FactCardProps {
   readonly fact: Fact;
+  readonly generatedByAi?: boolean;
   readonly hasDetailsPage?: boolean;
   readonly onReadMore?: () => void;
 }
@@ -17,12 +18,24 @@ const categoryLabels: Record<Fact["category"], string> = {
   filozofia_umyslu: "Filozofia umysłu",
 };
 
-export const FactCard = ({ fact, hasDetailsPage = true, onReadMore }: FactCardProps) => {
+export const FactCard = ({
+  fact,
+  generatedByAi = false,
+  hasDetailsPage = true,
+  onReadMore,
+}: FactCardProps) => {
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-      <p className="mb-3 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-        {categoryLabels[fact.category]}
-      </p>
+      <div className="mb-3 flex flex-wrap gap-2">
+        <p className="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+          {categoryLabels[fact.category]}
+        </p>
+        {generatedByAi && (
+          <p className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-950 dark:text-blue-200">
+            Wygenerowano przez AI
+          </p>
+        )}
+      </div>
       <h3 className="mb-2 text-lg font-semibold leading-tight">{fact.title}</h3>
       <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{fact.hook}</p>
       {hasDetailsPage ? (

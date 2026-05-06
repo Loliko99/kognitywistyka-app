@@ -1,4 +1,4 @@
-import { CATEGORIES, type Category, type Fact } from "@/domain/fact";
+import { CATEGORIES, type Category, type Fact } from "../domain/fact";
 
 const isNonEmptyString = (value: unknown): value is string => {
   return typeof value === "string" && value.trim().length > 0;

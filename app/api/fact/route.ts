@@ -1,23 +1,28 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-import { CATEGORIES, type Fact } from "@/domain/fact";
-import { getRandomFact } from "@/lib/facts";
-import { isCategory } from "@/lib/validation";
+import { CATEGORIES, type Fact } from "../../../domain/fact";
+import {
+  coerceGeneratedFactInput,
+  saveGeneratedFact,
+  type GeneratedFactInput,
+} from "../../../lib/ai-facts";
+import { getRandomFact } from "../../../lib/facts";
 
 const apiKey = process.env.GOOGLE_AI_KEY ?? "";
 const generationTimeoutMs = 8000;
 
-type GeneratedFact = Pick<
-  Fact,
-  "title" | "hook" | "explanation" | "example" | "whyItMatters" | "category"
->;
+export interface FactApiResponse extends Fact {
+  readonly generatedByAi: boolean;
+  readonly persisted: boolean;
+}
 
-const fallbackFact = (): GeneratedFact => {
+const fallbackFact = (): FactApiResponse => {
   const fact = getRandomFact();
 
   if (!fact) {
     return {
+      id: "neuroplastycznosc",
       title: "Neuroplastyczność",
       hook: "Mózg zmienia swoje połączenia przez całe życie.",
       explanation:
@@ -27,45 +32,30 @@ const fallbackFact = (): GeneratedFact => {
       whyItMatters:
         "To pokazuje, że uczenie się i rehabilitacja mogą realnie zmieniać sposób działania układu nerwowego.",
       category: "neurobiologia",
+      generatedByAi: false,
+      persisted: true,
     };
   }
 
   return {
-    title: fact.title,
-    hook: fact.hook,
-    explanation: fact.explanation,
-    example: fact.example,
-    whyItMatters: fact.whyItMatters,
-    category: fact.category,
+    ...fact,
+    generatedByAi: false,
+    persisted: true,
   };
 };
 
-const parseGeneratedFact = (text: string): GeneratedFact | null => {
-  const cleanText = text.replace(/```json/g, "").replace(/```/g, "").trim();
-  const parsed = JSON.parse(cleanText) as Partial<Record<keyof GeneratedFact, unknown>>;
+export const parseGeneratedFact = (text: string): GeneratedFactInput | null => {
+  try {
+    const cleanText = text.replace(/```json/g, "").replace(/```/g, "").trim();
+    const parsed = JSON.parse(cleanText) as Partial<Record<keyof GeneratedFactInput, unknown>>;
 
-  if (
-    typeof parsed.title !== "string" ||
-    typeof parsed.hook !== "string" ||
-    typeof parsed.explanation !== "string" ||
-    typeof parsed.example !== "string" ||
-    typeof parsed.whyItMatters !== "string" ||
-    !isCategory(parsed.category)
-  ) {
+    return coerceGeneratedFactInput(parsed);
+  } catch {
     return null;
   }
-
-  return {
-    title: parsed.title,
-    hook: parsed.hook,
-    explanation: parsed.explanation,
-    example: parsed.example,
-    whyItMatters: parsed.whyItMatters,
-    category: parsed.category,
-  };
 };
 
-const withTimeout = async <T,>(promise: Promise<T>, timeoutMs: number): Promise<T> => {
+export const withTimeout = async <T,>(promise: Promise<T>, timeoutMs: number): Promise<T> => {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
   const timeout = new Promise<never>((_, reject) => {
@@ -97,13 +87,23 @@ export async function GET() {
       },
     });
 
-    const prompt = `Wygeneruj jedną ciekawą, konkretną i mało oczywistą ciekawostkę kognitywistyczną po polsku. Nie powtarzaj ogólników. Zwróć wyłącznie poprawny JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole title ma być krótkie. Pole hook ma mieć jedno zdanie. Pola explanation, example i whyItMatters mają tworzyć rozszerzoną wersję ciekawostki. Pole category musi mieć jedną z wartości: ${CATEGORIES.join(", ")}.`;
+    const prompt = `Wygeneruj nową, ciekawą, konkretną i mało oczywistą ciekawostkę kognitywistyczną po polsku. Nie wybieraj wyłącznie tematów z istniejącej bazy. Możesz dotyczyć percepcji, pamięci, uwagi, emocji, neurobiologii, AI, języka, uczenia się, świadomości albo decyzji. Nie powtarzaj ogólników. Zwróć wyłącznie poprawny JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole title ma być krótkie. Pole hook ma mieć jedno zdanie. Pola explanation, example i whyItMatters mają tworzyć rozszerzoną wersję ciekawostki. Pole category musi mieć jedną z wartości: ${CATEGORIES.join(", ")}.`;
 
     const result = await withTimeout(model.generateContent(prompt), generationTimeoutMs);
     const response = await result.response;
-    const fact = parseGeneratedFact(response.text());
+    const generatedFact = parseGeneratedFact(response.text());
 
-    return NextResponse.json(fact ?? fallbackFact());
+    if (!generatedFact) {
+      return NextResponse.json(fallbackFact());
+    }
+
+    const saved = await saveGeneratedFact(generatedFact);
+
+    return NextResponse.json({
+      ...saved.fact,
+      generatedByAi: true,
+      persisted: saved.persisted,
+    } satisfies FactApiResponse);
   } catch (error) {
     console.error("Gemini fact generation failed:", error);
     return NextResponse.json(fallbackFact());
