@@ -14,7 +14,7 @@ export const factsData: Fact[] = [
     category: "psychologia_poznawcza",
   },
   {
-    id: "ślepa-plamka-uwagi",
+    id: "slepa-plamka-uwagi",
     title: "Możesz nie zauważyć oczywistej rzeczy",
     hook: "Silne skupienie na jednym zadaniu potrafi 'wyłączyć' inne bodzce.",
     explanation:
@@ -26,7 +26,7 @@ export const factsData: Fact[] = [
     category: "percepcja",
   },
   {
-    id: "fałszywe-wspomnienia",
+    id: "falszywe-wspomnienia",
     title: "Pamięć nie jest nagraniem wideo",
     hook: "Wspomnienia są rekonstruowane, a nie odtwarzane 1:1.",
     explanation:
@@ -50,7 +50,7 @@ export const factsData: Fact[] = [
     category: "psychologia_poznawcza",
   },
   {
-    id: "potwierdzenie-przekonań",
+    id: "potwierdzenie-przekonan",
     title: "Szukasz dowodów, które pasują do Twojej opinii",
     hook: "Efekt potwierdzenia wzmacnia to, w co już wierzysz.",
     explanation:

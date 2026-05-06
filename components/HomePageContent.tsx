@@ -9,6 +9,8 @@ import { RandomFactButton } from "@/components/RandomFactButton";
 import type { Category, Fact } from "@/domain/fact";
 import { getFactsByCategory } from "@/lib/facts";
 
+type ApiFact = Omit<Fact, "id">;
+
 interface HomePageContentProps {
   readonly allFacts: readonly Fact[];
   readonly factOfTheDay: Fact | null;
@@ -39,10 +41,10 @@ export const HomePageContent = ({
     setShowAiDetails(false);
 
     try {
-      const response = await fetch('/api/fact');
+      const response = await fetch("/api/fact");
       if (!response.ok) throw new Error("Błąd API");
       
-      const aiData = await response.json();
+      const aiData = (await response.json()) as ApiFact;
       
       const newFact: Fact = {
         id: `ai-${Date.now()}`,
@@ -51,7 +53,7 @@ export const HomePageContent = ({
         explanation: aiData.explanation,
         example: aiData.example,
         category: aiData.category as Category,
-        whyItMatters: "Ciekawostka wygenerowana dynamicznie przez model Gemini 1.5 Flash."
+        whyItMatters: aiData.whyItMatters,
       };
 
       setHighlightedFact(newFact);
@@ -98,7 +100,7 @@ export const HomePageContent = ({
             <FactCard
               fact={highlightedFact}
               hasDetailsPage={!isAiFact}
-              onReadMore={() => setShowAiDetails(true)}
+              onReadMore={() => setShowAiDetails((current) => !current)}
             />
             {isAiFact && showAiDetails && (
               <div className="mt-6">

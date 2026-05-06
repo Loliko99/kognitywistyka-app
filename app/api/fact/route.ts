@@ -97,7 +97,7 @@ export async function GET() {
       },
     });
 
-    const prompt = `Wygeneruj jedna ciekawostke kognitywistyczna po polsku. Zwroc wylacznie JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole category musi miec jedna z wartosci: ${CATEGORIES.join(", ")}.`;
+    const prompt = `Wygeneruj jedna ciekawa, konkretna i malo oczywista ciekawostke kognitywistyczna po polsku. Nie powtarzaj ogolnikow. Zwroc wylacznie poprawny JSON z polami: title, hook, explanation, example, whyItMatters, category. Pole title ma byc krotkie. Pole hook ma miec jedno zdanie. Pola explanation, example i whyItMatters maja tworzyc rozszerzona wersje ciekawostki. Pole category musi miec jedna z wartosci: ${CATEGORIES.join(", ")}.`;
 
     const result = await withTimeout(model.generateContent(prompt), generationTimeoutMs);
     const response = await result.response;
