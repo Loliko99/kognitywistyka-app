@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { FactCard } from "@/components/FactCard";
+import { FactDetails } from "@/components/FactDetails";
 import { RandomFactButton } from "@/components/RandomFactButton";
 import type { Category, Fact } from "@/domain/fact";
 import { getFactsByCategory } from "@/lib/facts";
@@ -21,8 +22,8 @@ export const HomePageContent = ({
 }: HomePageContentProps) => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
   const [highlightedFact, setHighlightedFact] = useState<Fact | null>(factOfTheDay);
-  // Nowy stan, żeby przycisk wiedział, że AI pracuje
   const [isAiLoading, setIsAiLoading] = useState(false);
+  const [showAiDetails, setShowAiDetails] = useState(false);
 
   const visibleFacts = useMemo(() => {
     if (selectedCategory === "all") {
@@ -35,6 +36,8 @@ export const HomePageContent = ({
   // PODŁĄCZENIE AI ZAMIAST ZWYKŁEGO LOSOWANIA
   const onRandomFact = async () => {
     setIsAiLoading(true);
+    setShowAiDetails(false);
+
     try {
       const response = await fetch('/api/fact');
       if (!response.ok) throw new Error("Błąd API");
@@ -63,6 +66,8 @@ export const HomePageContent = ({
     }
   };
 
+  const isAiFact = highlightedFact?.id.startsWith("ai-") ?? false;
+
   return (
     <div className="space-y-8">
       <section className="space-y-3">
@@ -90,7 +95,16 @@ export const HomePageContent = ({
 
         {highlightedFact ? (
           <div className={isAiLoading ? "animate-pulse opacity-50" : ""}>
-            <FactCard fact={highlightedFact} />
+            <FactCard
+              fact={highlightedFact}
+              hasDetailsPage={!isAiFact}
+              onReadMore={() => setShowAiDetails(true)}
+            />
+            {isAiFact && showAiDetails && (
+              <div className="mt-6">
+                <FactDetails fact={highlightedFact} />
+              </div>
+            )}
           </div>
         ) : (
           <p className="text-sm text-slate-600 dark:text-slate-300">

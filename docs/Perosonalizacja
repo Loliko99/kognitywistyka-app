@@ -1,0 +1,159 @@
+# ClearClause — ICP & Problem Matrix
+> Wygenerowano wg procedury `WF_ICP_Persona` | Etap: Idea / Pre-MVP | Data: 2026-04-05
+
+---
+
+## 1. ICP Card
+
+| Pole | Opis |
+|---|---|
+| **Kto** | Młodzi dorośli (18–90 lat) w Polsce: studenci wynajmujący pierwsze mieszkanie, freelancerzy (graficy, copywriterzy, programiści-zleceniobiorcy) oraz osoby zaciągające pożyczki konsumenckie lub chwilówki. Brak wykształcenia prawniczego, dochód 0–5 000 zł netto/mies., decyzje podejmują samodzielnie online. |
+| **Co (Main Job)** | Podpisać umowę (najmu, o dzieło/zlecenie, pożyczki) szybko i pewnie — bez ryzyka, że „małe gwiazdki" wpędzą ich w kłopoty finansowe lub prawne. |
+| **Ból** | Nie rozumieją paragrafów prawnych, boją się eksmisji, ukrytych kar i klauzul, a na prawnika ich nie stać (600–1 500 zł/godz.). Często podpisują „na wiarę". |
+| **Decision Criteria** | Czy to jest szybkie (< 5 min)? Czy wyjaśni mi *konkretny* paragraf prostym językiem? Czy jest bezpłatne lub tanie (freemium)? Czy pochodzi z wiarygodnego źródła (nie ChatGPT „na dziko")? |
+| **KPIs użytkownika** | Liczba paragrafów, których nie rozumie → 0 niespodzianek po podpisaniu; czas analizy umowy: z 2 godz. do 5 min; koszt porady: z 0 (ignorowanie) lub 800 zł (prawnik) do 0–29 zł/mies. |
+| **Trigger (kiedy szuka)** | Otrzymuje skan/PDF umowy od wynajmującego, agencji pracy lub firmy pożyczkowej i ma 24–72 godz. na decyzję. |
+
+---
+
+## 2. Problem Matrix
+
+> Wzór priorytetu: **Priority = Impact × Confidence × Ease**
+> Skala 1–10 dla każdego wymiaru.
+
+| # | Problem | Trigger | Obecne rozwiązanie | Impact | Confidence | Ease | **Priority** | Sugerowany eksperyment |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **Niezrozumienie kar umownych** (np. kara za wcześniejsze rozwiązanie umowy najmu, kary w zleceniu) | Dostaje umowę z §8 „Kary Umowne" formułowanym legalese | Pyta znajomych / ignoruje / podpisuje „na wiarę" | 9 | 8 | 9 | **648** | Landing page z demo „wklej paragraf → dostań wyjaśnienie" |
+| 2 | **Lęk przed eksmisją** (niezrozumienie warunków wypowiedzenia, trybów eksmisji) | Wynajmujący grozi rozwiązaniem umowy lub wysyła pismo | Forum prawne, bezpłatna porada miejska (kolejka 2–4 tyg.) | 9 | 7 | 8 | **504** | Concierge MVP: ręczna analiza 5 umów najmu dla testerów + formularz feedbacku |
+| 3 | **Ukryte koszty kredytu / pożyczki** (RRSO, PES, ubezpieczenie do kredytu) | Podpisuje umowę pożyczki w banku lub SKOK | Kalkulator RRSO na stronach UOKiK (trudny w interpretacji) | 8 | 8 | 7 | **448** | One-pager „kalkulator realnego kosztu pożyczki" + pre-signup |
+| 4 | **Niejasne prawa freelancera w umowie o dzieło/zlecenie** (IP, prawa autorskie, zakazy konkurencji) | Otrzymuje umowę o dzieło od klienta z klauzulą „wszelkie prawa majątkowe przechodzą…" | Ignoruje lub pyta na grupach FB (nierzetelne porady) | 8 | 6 | 8 | **384** | Post w grupach FB dla freelancerów z linkiem do landing page (mierz CTR + signupy) |
+| 5 | **Brak „bezpiecznej" szablonowej umowy** (użytkownik musi wygenerować umowę od zera i nie wie, co uwzględnić) | Chce sam wynająć pokój / zlecić coś i potrzebuje umowy | Darmowe szablony z internetu (przestarzałe, bez kontekstu PL) | 7 | 6 | 7 | **294** | Concierge: wyślij użytkownikowi gotową umowę przez Typeform + ręczne wypełnienie |
+
+### Wybór Core Problem do testu
+**Problem #1 — Niezrozumienie kar umownych** (Priority 648, Ease 9).
+Najłatwiejszy do testowania (demo „wklej paragraf"), wysoka wartość odczuwana natychmiast, wiarygodne dane (fora, grupy FB).
+
+---
+
+## 3. Interview Script (7 pytań) — dostosowany do targetu ClearClause
+
+> **Cel wywiadu:** Potwierdzić, że użytkownik ma realny problem z rozumieniem umów, znaleźć trigger i zmierzyć willingness-to-pay.
+> **Czas:** 15–20 min. **Format:** Zoom/Google Meet lub rozmowa telefoniczna.
+> **Profil rozmówcy:** Student wynajmujący mieszkanie LUB freelancer LUB ktoś, kto podpisał pożyczkę w ciągu ostatnich 12 mies.
+
+---
+
+**[Intro — 1 min]**
+> „Cześć! Robię badanie do projektu — chcę zrozumieć, jak ludzie radzą sobie z umowami prawnymi. Nie sprzedaję nic. Zapis wywiadu tylko dla mnie — ok?"
+
+---
+
+**Pytanie 1 — Kontekst i trigger**
+> „Opowiedz mi o ostatnim razie, kiedy miałeś/aś do podpisania jakąś umowę — najmu, zlecenia, pożyczki. Co to była za sytuacja?"
+
+*Cel: Zrozumieć realny kontekst, nie hipotetyczny.*
+
+---
+
+**Pytanie 2 — Obecne zachowanie (Current solution)**
+> „Co dokładnie zrobiłeś/aś zanim ją podpisałeś/aś? Przeczytałeś/aś całość? Kogoś zapytałeś/aś? Jak to wyglądało krok po kroku?"
+
+*Cel: Wyłapać, czy pomijają czytanie, pytają znajomych, szukają w Google — i jak długo to trwało.*
+
+---
+
+**Pytanie 3 — Ból i frustracja**
+> „Który fragment lub paragraf był dla Ciebie najbardziej niejasny albo niepokojący? Co w tym procesie najbardziej Cię frustrowało?"
+
+*Cel: Zidentyfikować konkretne punkty bólu (kary umowne, wypowiedzenie, RRSO).*
+
+---
+
+**Pytanie 4 — Desired outcome**
+> „Jak wyobrażasz sobie idealne podpisanie umowy? Po czym poznasz, że 'wszystko jest ok' i możesz ją spokojnie podpisać?"
+
+*Cel: Zrozumieć, co oznacza 'sukces' dla użytkownika — pewność, szybkość, konkretna lista ryzyk.*
+
+---
+
+**Pytanie 5 — Wartość i skala problemu**
+> „Ile czasu zajęło Ci zrozumienie tej umowy? Albo — czy rezygnowałeś/aś z czegoś (mieszkanie, zlecenie) bo umowa była zbyt zawiła?"
+
+*Cel: Zbudzić liczby: czas stracony, utracone szanse finansowe, strach przed konsekwencjami.*
+
+---
+
+**Pytanie 6 — Willingness-to-pay**
+> „Gdyby istniała aplikacja, która w 5 minut tłumaczy całą umowę na prosty język i wskazuje, co jest ryzykowne — ile byłbyś/abyś w stanie za nią zapłacić miesięcznie? A jednorazowo za analizę jednej umowy?"
+
+*Cel: Bezpośredni test WTP. Zapamiętaj liczbę — nie sugeruj wartości.*
+
+---
+
+**Pytanie 7 — Alternatywy i bariery**
+> „Czy próbowałeś/aś już czegoś podobnego — ChatGPT, porady online, formularz UOKiK? Co zadziałało, co nie? Co powstrzymuje Cię przed korzystaniem z takich narzędzi?"
+
+*Cel: Zrozumieć, dlaczego istniejące alternatywy są niewystarczające i jakie bariery adoptji (zaufanie, cena, UX) istnieją.*
+
+---
+
+**[Outro]**
+> „Ostatnie pytanie — czy znasz kogoś, kto też niedawno podpisywał umowę i mógłby mi porozmawiać 15 min? Mogę wysłać Ci link do produktu gdy będzie gotowy?"
+
+---
+
+## 4. Concierge MVP — Plan eksperymentu
+
+### Cel
+Sprawdzić ręcznie, czy użytkownicy są gotowi korzystać z ClearClause i zapłacić za value — **bez budowania kodu**.
+
+### Schemat
+
+```
+[Użytkownik] → wkleja/przesyła PDF umowy na WhatsApp/email/Typeform
+      ↓
+[Ty ręcznie] → analizujesz umowę, opisujesz ryzyka prostym językiem (30–60 min)
+      ↓
+[Dostarczasz] → raport (bullet list: "§3 znaczy X, ryzyko: Y. §8 kara: Z zł")
+      ↓
+[Pytasz] → "Czy to było pomocne? Za ile byś to kupił/a? Co brakowało?"
+```
+
+### Kroki
+
+1. **Rekrutacja (48 godz.)** — Wyślij wiadomość do 10–15 osób z grupy docelowej (grupy FB: „Wynajem Mieszkań Warszawa/Kraków/Wrocław", „Freelancerzy PL", Discord studencki). Treść: *„Masz umowę najmu/zlecenia do podpisania? Przeanalizuję ją dla Ciebie za darmo — eksperyment badawczy, 5 min Twojego czasu."*
+
+2. **Zbieranie umów** — Przyjmuj PDF/zdjęcia przez Typeform lub bezpośrednio na email. Poproś o zgodę na przetwarzanie (RODO — anonimizuj dane osobowe przed analizą).
+
+3. **Ręczna analiza** — Dla każdej umowy przygotuj bullet-list: co znaczy każdy kluczowy paragraf, jakie są ryzyka, co warto negocjować. Czas: ~45 min/umowę.
+
+4. **Dostawa i feedback** — Wyślij raport przez email/WhatsApp. Po 24 godz. wyślij 3 pytania feedbackowe:
+   - „Czy wyjaśnienie było zrozumiałe? (1–10)"
+   - „Czy zmieniło Twoje plany dotyczące umowy? (Tak/Nie + dlaczego)"
+   - „Ile zapłaciłbyś/abyś za taki raport? (0 zł / 9 zł / 19 zł / 49 zł)"
+
+5. **Mierzone metryki**
+   | Metryka | Cel (próg minimalnego sygnału) |
+   |---|---|
+   | Liczba umów przesłanych | ≥ 5 w ciągu 72 godz. |
+   | Ocena zrozumiałości | ≥ 7/10 średnia |
+   | Zmiana decyzji po raporcie | ≥ 3/5 wskazuje zmianę |
+   | WTP > 0 zł | ≥ 60% respondentów |
+
+6. **Następny krok na podstawie wyników**
+   - Sygnał pozytywny (≥ 3/4 metryk spełnione) → zbuduj MVP: interfejs „wklej tekst → AI wyjaśnia" (Next.js + OpenAI API), uruchom pre-signup z ceną 9–19 zł/analizę.
+   - Sygnał słaby → wróć do wywiadu, sprawdź Problem #2 lub #4, zredefiniuj ICP.
+
+---
+
+## 5. Checklista końcowa (WF_ICP_Persona)
+
+- [x] 1-stronicowa karta ICP
+- [ ] 5–10 Job Snapshotów (do przeprowadzenia w ramach wywiadów)
+- [x] Problem Matrix z priorytetami (5 problemów, Priority = I×C×E)
+- [x] Sugestia szybkiego eksperymentu (Concierge MVP)
+- [ ] **Next step:** Przeprowadź 7 wywiadów → zweryfikuj Problem #1 → uruchom Concierge MVP → jeśli WTP > 0 u ≥ 60%, zacznij budować MVP
+
+---
+
+*Dokument wygenerowany wg procedury `WF_ICP_Persona` na podstawie danych wejściowych projektu ClearClause.*
