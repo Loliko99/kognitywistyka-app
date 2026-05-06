@@ -6,6 +6,9 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   title: " Codzienna dawka kognitywistycznej wiedzy",
   description: "Potwierdzone naukowo ciekawostki o tym, jak dziala umysl.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 interface RootLayoutProps {

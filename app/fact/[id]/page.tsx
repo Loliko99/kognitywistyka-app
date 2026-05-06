@@ -2,8 +2,15 @@ import Link from "next/link";
 import { FactDetails } from "@/components/FactDetails";
 import { getFactById } from "@/lib/facts";
 
-export default function FactDetailsPage({ params }: { params: { id: string } }) {
-  const fact = getFactById(params.id);
+interface FactDetailsPageProps {
+  readonly params: Promise<{
+    readonly id: string;
+  }>;
+}
+
+export default async function FactDetailsPage({ params }: FactDetailsPageProps) {
+  const { id } = await params;
+  const fact = getFactById(id);
 
   // Jeśli link to np. wygenerowana przez AI ciekawostka, której nie ma w pliku
   if (!fact) {
