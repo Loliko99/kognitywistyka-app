@@ -1,29 +1,22 @@
-# Wymagania Biznesowe
+# Wymagania biznesowe
 
 ## Cele produktu
-- Dostarczać krótkie i angażujące ciekawostki kognitywistyczne w języku polskim.
-- Umożliwiać szybkie rozwinięcie ciekawostki do pełniejszego wyjaśnienia.
-- Połączyć wiarygodne archiwum statyczne z generowaniem nowych faktów przez AI.
-- Zachować stabilność działania nawet wtedy, gdy integracja AI nie odpowiada.
+- Dostarczyć użytkownikowi prosty sposób na poznanie krótkiej, interesującej ciekawostki kognitywistycznej.
+- Umożliwić poznanie pełnego opisu faktu po chęci jego rozwinięcia.
+- Zapewnić niezawodność działania nawet bez zewnętrznej integracji AI.
 
-## User Stories
-- Jako użytkownik chcę zobaczyć ciekawostkę dnia, aby od razu dostać wartościową treść.
-- Jako użytkownik chcę kliknąć "Losuj ciekawostkę", aby otrzymać nową ciekawostkę wygenerowaną przez AI.
-- Jako użytkownik chcę rozwinąć ciekawostkę AI, aby zobaczyć wyjaśnienie, przykład i znaczenie tematu.
-- Jako użytkownik chcę przejść do pełnej wersji faktu z archiwum, aby przeczytać jego szczegóły na osobnej stronie.
-- Jako użytkownik chcę filtrować archiwum po kategoriach, aby szybciej znaleźć interesujące mnie tematy.
-- Jako właściciel produktu chcę, aby aplikacja działała bez awarii nawet przy błędzie AI.
+## User stories
+- Jako użytkownik chcę zobaczyć losową ciekawostkę, aby szybko poznać nową wiedzę.
+- Jako użytkownik chcę rozwinąć ciekawostkę do pełnego opisu, aby zrozumieć temat głębiej.
+- Jako użytkownik chcę filtrować ciekawostki po kategoriach, aby wyświetlać interesujące mnie tematy.
+- Jako właściciel produktu chcę, żeby aplikacja działała nawet przy braku klucza AI.
 
 ## Przypadki użycia
-- Wyświetlenie strony głównej z faktem dnia.
-- Wylosowanie nowej ciekawostki AI.
-- Rozwinięcie ciekawostki AI na stronie głównej.
-- Otwarcie statycznej podstrony `/fact/[id]`.
-- Filtrowanie archiwum po kategoriach.
+- Wyświetlenie losowej ciekawostki na głównej stronie.
+- Przejście do szczegółów konkretnej ciekawostki.
+- Losowanie nowej ciekawostki po kliknięciu przycisku.
 
 ## Ograniczenia biznesowe
-- Brak kont użytkowników i logowania.
-- Brak płatności i subskrypcji.
-- Treści są w języku polskim.
-- Wygenerowane ciekawostki AI nie są zapisywane na stałe.
-- Repozytorium jest źródłem prawdy dla dokumentacji, planów i statycznych faktów.
+- Nie ma potrzeby budowania logowania lub kont użytkowników.
+- Treści mają być w języku polskim.
+- Aplikacja ma działać jako prosta strona informacyjna z opcjonalnym AI.

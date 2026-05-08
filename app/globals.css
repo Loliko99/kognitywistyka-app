@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -12,11 +13,30 @@ body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     "Apple Color Emoji", "Segoe UI Emoji";
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(122, 158, 159, 0.17), transparent 28rem),
+    radial-gradient(circle at 84% 8%, rgba(91, 108, 130, 0.18), transparent 24rem),
+    linear-gradient(180deg, #0b1220 0%, #101a2a 44%, #0b1220 100%);
+  color: #e5edf5;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #020617;
-  }
+::selection {
+  background: rgba(122, 158, 159, 0.28);
+}
+
+.scientific-grid {
+  background-image:
+    linear-gradient(rgba(226, 237, 245, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 237, 245, 0.055) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.network-field {
+  background:
+    radial-gradient(circle at 16% 24%, rgba(122, 158, 159, 0.55) 0 3px, transparent 4px),
+    radial-gradient(circle at 76% 18%, rgba(91, 108, 130, 0.45) 0 3px, transparent 4px),
+    radial-gradient(circle at 62% 72%, rgba(122, 158, 159, 0.4) 0 3px, transparent 4px),
+    radial-gradient(circle at 30% 70%, rgba(226, 237, 245, 0.36) 0 3px, transparent 4px),
+    linear-gradient(115deg, transparent 12%, rgba(226, 237, 245, 0.14) 12.2%, transparent 36%),
+    linear-gradient(35deg, transparent 30%, rgba(122, 158, 159, 0.16) 30.2%, transparent 64%);
 }

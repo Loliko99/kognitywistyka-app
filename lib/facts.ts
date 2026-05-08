@@ -10,8 +10,8 @@ export const getAllFacts = (): Fact[] => {
   return safeFactsSource();
 };
 
-export const getFactById = (id: string): Fact | null => {
-  if (!id.trim()) {
+export const getFactById = (id: string | null | undefined): Fact | null => {
+  if (!id?.trim()) {
     return null;
   }
 

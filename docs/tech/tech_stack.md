@@ -1,37 +1,22 @@
-# Stos Technologiczny
+# Stos technologiczny
 
-## Stack
-- `Next.js 16` - routing, renderowanie stron i endpoint API.
-- `React 19` - komponenty interfejsu.
-- `TypeScript` - typowanie domeny i kontraktów danych.
-- `Tailwind CSS` - stylowanie UI.
-- `@google/generative-ai` - integracja z Gemini.
-- `Supabase REST API` - opcjonalny trwały zapis ciekawostek AI.
-- `Vercel` - hosting i automatyczny deploy po pushu do GitHuba.
+## Główne technologie
+- `Next.js` 16 — frontend i routing aplikacji.
+- `React` 19 — budowa komponentów UI.
+- `TypeScript` — typowanie i bezpieczeństwo kodu.
+- `Tailwind CSS` — stylizacja interfejsu.
 
-## Uzasadnienie wyborów
-- Next.js pozwala utrzymać frontend i prosty backend w jednym repozytorium.
-- TypeScript zmniejsza ryzyko niespójności między danymi a komponentami.
-- Lokalny plik `data/facts.ts` jest wystarczający dla MVP i zgodny z wymaganiem audytowalności.
-- Vercel upraszcza deployment i obsługę zmiennych środowiskowych.
+## Wybór technologii
+- Next.js zapewnia łatwą konfigurację routingu, API oraz wsparcie dla serwerowego renderowania.
+- TypeScript minimalizuje błędy związane z typami i ułatwia rozwój.
+- Tailwind CSS upraszcza szybkie tworzenie interfejsu bez dodatkowego CSS.
 
 ## Ograniczenia technologiczne
-- Trwały zapis faktów AI wymaga konfiguracji Supabase.
-- Gemini wymaga zmiennej środowiskowej `GOOGLE_AI_KEY`.
-- Supabase wymaga zmiennych `SUPABASE_URL` i `SUPABASE_SERVICE_ROLE_KEY`.
-- Endpoint AI musi mieć fallback, ponieważ usługa zewnętrzna może zwrócić błąd albo przekroczyć limit czasu.
+- Aplikacja obecnie nie korzysta z bazy danych.
+- Zawartość jest przechowywana lokalnie w pliku `data/facts.ts`.
+- Integracja AI wymaga środowiskowej zmiennej `GOOGLE_AI_KEY`.
 
 ## Konwencje projektowe
-- Każda funkcjonalność powinna mieć plan w `docs/plans/PLAN_*.md`.
-- Po implementacji trzeba zaktualizować `implemented_plans.md` i `implemented_features.md`.
-- Model faktu jest definiowany w `domain/fact.ts`.
-- Dane statyczne muszą przechodzić walidację z `lib/validation.ts`.
-- Identyfikatory faktów powinny być slugami ASCII, np. `falszywe-wspomnienia`.
-- Teksty widoczne dla użytkownika powinny być po polsku i z polskimi znakami.
-
-## Komendy kontrolne
-```bash
-npm.cmd run lint
-npm.cmd test
-npm.cmd run build
-```
+- Dane muszą przechodzić walidację poprzez `lib/validation.ts`.
+- Każdy komponent powinien być typowany w oparciu o `domain/fact.ts`.
+- Interfejsy powinny być proste i czytelne, bez nadmiernych zależności.

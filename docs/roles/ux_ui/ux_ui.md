@@ -1,34 +1,13 @@
 # UX/UI
 
-## Przepływ użytkownika
+## Makiety i przepływ użytkownika
 1. Użytkownik wchodzi na stronę główną.
-2. Widzi nagłówek, opis, fakt dnia i przycisk "Losuj ciekawostkę".
-3. Kliknięcie przycisku uruchamia generowanie ciekawostki AI.
-4. W czasie ładowania użytkownik widzi informację, że AI pracuje.
-5. Po wygenerowaniu faktu użytkownik może kliknąć "Rozwiń ciekawostkę".
-6. Poniżej karty pojawia się pełna wersja: wyjaśnienie, przykład i znaczenie.
-7. W archiwum użytkownik może filtrować statyczne fakty i otwierać ich podstrony.
+2. Widzi nagłówek, fakt dnia oraz przycisk "Losuj ciekawostkę".
+3. Pod spodem widzi listę statycznych ciekawostek z kategoriami.
+4. Kliknięcie faktu kieruje do strony szczegółów z pełnym opisem.
 
 ## Zasady UX
-- Teksty powinny być krótkie, jasne i po polsku.
-- Przyciski powinny jasno opisywać akcję.
-- Ciekawostki AI nie powinny prowadzić na nieistniejące podstrony.
-- Stan ładowania powinien być widoczny.
-- Fallback powinien działać dyskretnie, bez technicznych komunikatów dla użytkownika.
-- Widok powinien być responsywny na telefonie i desktopie.
-
-## Makieta tekstowa
-```text
-[Nagłówek aplikacji]
-[Opis wartości]
-
-[Ciekawostka dnia / AI]
-[Losuj ciekawostkę]
-[Karta faktu]
-[Rozwiń ciekawostkę]
-[Pełne szczegóły, jeśli rozwinięto]
-
-[Archiwum faktów]
-[Filtry kategorii]
-[Siatka kart]
-```
+- Prostota: jednoznaczne przyciski i jasne CTA.
+- Czytelność: nagłówki, hooki i krótkie podsumowania.
+- Odpowiedź systemu: komunikat podczas ładowania AI oraz fallback do lokalnej bazy.
+- Mobilność: responsywny układ kart i obszarów treści.

@@ -9,12 +9,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-60";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  default: "bg-blue-700 text-white hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-400",
+  default: "bg-[#9fc6c7] text-[#0B1220] shadow-sm hover:-translate-y-0.5 hover:bg-[#b9d8d9] hover:shadow-md",
   secondary:
-    "bg-slate-900 text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200",
+    "border border-white/10 bg-white/8 text-slate-100 shadow-sm backdrop-blur hover:-translate-y-0.5 hover:border-[#7A9E9F] hover:bg-white/12 hover:shadow-md",
 };
 
 export const Button = ({ variant = "default", className, ...props }: ButtonProps) => {

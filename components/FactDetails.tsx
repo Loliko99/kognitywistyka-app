@@ -16,41 +16,34 @@ const categoryLabels: Record<Fact["category"], string> = {
 
 export const FactDetails = ({ fact, generatedByAi = false }: FactDetailsProps) => {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <div className="mb-3 flex flex-wrap gap-2">
-        <p className="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+    <article className="rounded-2xl border border-white/10 bg-white/[0.075] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur">
+      <div className="mb-4 flex flex-wrap gap-2">
+        <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-slate-300">
           {categoryLabels[fact.category]}
-        </p>
+        </span>
         {generatedByAi && (
-          <p className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-950 dark:text-blue-200">
+          <span className="rounded-full bg-[#7A9E9F]/18 px-3 py-1 text-xs font-medium text-[#b9d8d9]">
             Wygenerowano przez AI
-          </p>
+          </span>
         )}
       </div>
-      <h1 className="mb-3 text-2xl font-bold tracking-tight">{fact.title}</h1>
-      <p className="mb-6 text-base text-slate-700 dark:text-slate-200">{fact.hook}</p>
 
-      <section className="space-y-4">
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Wyjaśnienie
-          </h2>
-          <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.explanation}</p>
-        </div>
+      <h1 className="mb-3 text-2xl font-semibold tracking-tight text-slate-50">{fact.title}</h1>
+      <p className="mb-7 text-base leading-7 text-slate-300">{fact.hook}</p>
 
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Przykład
-          </h2>
-          <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.example}</p>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            Dlaczego to ważne
-          </h2>
-          <p className="mt-1 text-slate-700 dark:text-slate-200">{fact.whyItMatters}</p>
-        </div>
+      <section className="grid gap-4">
+        {[
+          ["Wyjaśnienie", fact.explanation],
+          ["Przykład", fact.example],
+          ["Dlaczego to ważne", fact.whyItMatters],
+        ].map(([label, text]) => (
+          <div key={label} className="rounded-xl border border-white/10 bg-[#0B1220]/55 p-4">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9fc6c7]">
+              {label}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-slate-200">{text}</p>
+          </div>
+        ))}
       </section>
     </article>
   );

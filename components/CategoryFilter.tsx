@@ -22,18 +22,21 @@ export const CategoryFilter = ({
   selectedCategory,
   onChange,
 }: CategoryFilterProps) => {
+  const buttonClass = (isSelected: boolean) =>
+    `rounded-full border px-4 py-2 text-sm font-medium transition duration-200 ${
+      isSelected
+        ? "border-[#9fc6c7] bg-[#9fc6c7] text-[#0B1220] shadow-sm"
+        : "border-white/10 bg-white/[0.06] text-slate-300 hover:border-[#7A9E9F] hover:text-white"
+    }`;
+
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
         type="button"
         onClick={() => onChange("all")}
-        className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
-          selectedCategory === "all"
-            ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-            : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-        }`}
+        className={buttonClass(selectedCategory === "all")}
       >
-      Wszystkie
+        Wszystkie
       </button>
 
       {categories.map((category) => (
@@ -41,11 +44,7 @@ export const CategoryFilter = ({
           key={category}
           type="button"
           onClick={() => onChange(category)}
-          className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
-            selectedCategory === category
-              ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-              : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-          }`}
+          className={buttonClass(selectedCategory === category)}
         >
           {categoryLabels[category]}
         </button>
