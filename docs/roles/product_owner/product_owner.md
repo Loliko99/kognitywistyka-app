@@ -1,18 +1,21 @@
 # Product Owner
 
-## Wizja produktu
-Aplikacja ma dostarczać krótkie, angażujące ciekawostki kognitywistyczne i umożliwiać ich rozwinięcie do pełnego wyjaśnienia.
+## Wizja Produktu
+Daily Spark / Kognitive ma pokazywać kognitywistykę jako nowoczesny obszar wiedzy o umyśle, technologii i AI. Strona ma jednocześnie edukować, budować wrażenie naukowego autorytetu i zachęcać do eksplorowania ciekawostek poznawczych.
 
 ## Backlog
-- Losowanie ciekawostki kognitywistycznej
-- Strona szczegółów faktu
-- Filtrowanie ciekawostek po kategoriach
-- Fallback lokalnej bazy przy braku AI
-- Integracja z AI do generowania nowych faktów
+- Statyczne archiwum ciekawostek.
+- Generator ciekawostek AI.
+- Rozszerzona wersja ciekawostki.
+- Trwałe linki dla ciekawostek AI przez Supabase.
+- Scientific landing redesign.
+- Sekcja ścieżek kariery po kognitywistyce.
+- Przyszłość: panel dodawania faktów.
+- Przyszłość: historia wygenerowanych ciekawostek.
 
 ## Priorytety
-1. Stabilność podstawowej funkcji losowania faktów
-2. Czytelny widok szczegółów ciekawostki
-3. User experience dla przejścia do szczegółów
-4. Obsługa błędów integracji AI
-5. Rozszerzenia w przyszłości: system tagów, analiza trendów
+1. Stabilne działanie generatora i archiwum.
+2. Widoczność sekcji ciekawostek jako głównej atrakcji.
+3. Nowoczesny, naukowy klimat strony.
+4. Czytelność mobile.
+5. Spójność dokumentacji SDD z implementacją.

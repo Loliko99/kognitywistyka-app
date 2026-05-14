@@ -1,6 +1,6 @@
 # Daily Spark - Ciekawostki Kognitywistyczne
 
-Aplikacja Next.js prezentująca ciekawostki o poznaniu, mózgu i umyśle. Strona łączy statyczne archiwum faktów z opcjonalnym generowaniem nowych ciekawostek przez AI.
+Aplikacja Next.js prezentująca ciekawostki o poznaniu, mózgu i umyśle. Strona łączy statyczne archiwum faktów z generowaniem nowych ciekawostek przez AI oraz nowoczesnym landing page kierunku kognitywistyka.
 
 ## Wymagania
 - Node.js 20+
@@ -13,18 +13,18 @@ npm install
 
 ## Uruchomienie lokalne
 ```bash
-npm run dev
+npm.cmd run dev
 ```
 
 Aplikacja będzie dostępna pod adresem [http://localhost:3000](http://localhost:3000).
 
 ## Build produkcyjny
 ```bash
-npm run build
-npm run start
+npm.cmd run build
+npm.cmd run start
 ```
 
-## Zmienna środowiskowa
+## Zmienne środowiskowe
 Generowanie AI wymaga zmiennej:
 
 ```text
@@ -56,8 +56,8 @@ SUPABASE_AI_FACTS_TABLE=ai_facts
 - Ciekawostki AI są zapisywane na stałe, jeśli skonfigurowano Supabase.
 
 ## Trasy
-- `/` - strona główna z faktem dnia, archiwum i losowaniem AI.
-- `/fact/[id]` - szczegóły statycznej ciekawostki.
+- `/` - strona główna z landing page, generatorem AI i archiwum.
+- `/fact/[id]` - szczegóły statycznej lub zapisanej ciekawostki.
 - `/api/fact` - endpoint generujący ciekawostkę AI lub fallback.
 
 ## Spec Driven Development
@@ -66,6 +66,8 @@ Dokumentacja SDD znajduje się w `docs/`.
 Najważniejsze pliki:
 - `docs/plans/PLAN_random_fact.md`
 - `docs/plans/PLAN_ai_generated_fact.md`
+- `docs/plans/PLAN_persist_ai_facts.md`
+- `docs/plans/PLAN_scientific_landing_redesign.md`
 - `implemented_plans.md`
 - `implemented_features.md`
 

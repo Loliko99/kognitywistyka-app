@@ -1,18 +1,28 @@
 # Tester
 
-## Strategia testów
-- Testy jednostkowe dla logiki pobierania i losowania faktów.
-- Testy integracyjne dla strony głównej i strony szczegółów.
-- Testy regresyjne dla filtrowania kategorii i fallbacku AI.
+## Strategia Testów
+Minimalna kontrola jakości obejmuje lint, testy automatyczne i build produkcyjny. Dodatkowo wymagane są testy manualne głównych przepływów użytkownika.
 
-## Scenariusze testowe
-- Użytkownik widzi fakt dnia po wejściu na stronę.
-- Kliknięcie "Losuj ciekawostkę" wyświetla nową ciekawostkę lub fallback z lokalnej bazy.
-- Kliknięcie faktu otwiera stronę szczegółów.
-- Błąd AI nie blokuje strony i wyświetlany jest komunikat zastępczy.
+## Scenariusze Testowe
+- Strona główna renderuje się bez błędów.
+- Sekcja ciekawostek jest widoczna wysoko na stronie.
+- Przycisk "Wygeneruj ciekawostkę AI" działa.
+- Ciekawostka AI może zostać rozwinięta.
+- Archiwum filtruje fakty po kategoriach.
+- `/fact/neuroplastycznosc` renderuje szczegóły bez błędu `trim`.
+- Nieznany `/fact/...` pokazuje bezpieczny komunikat.
 
-## Przypadki edge-case
-- Brak danych w `data/facts.ts`.
-- Nieprawidłowy format zwrócony przez API AI.
-- Błąd sieci podczas wywoływania `/api/fact`.
-- Przejście do nieistniejącego `id` faktu.
+## Przypadki Edge Case
+- Brak `GOOGLE_AI_KEY`.
+- Gemini zwraca niepoprawny JSON.
+- Gemini przekracza timeout.
+- Brak Supabase.
+- Nieistniejący `id` faktu.
+- Użytkownik szybko klika generowanie kilka razy.
+
+## Komendy
+```bash
+npm.cmd run lint
+npm.cmd test
+npm.cmd run build
+```

@@ -1,22 +1,39 @@
-# Stos technologiczny
+# Stos Technologiczny
 
-## Główne technologie
-- `Next.js` 16 — frontend i routing aplikacji.
-- `React` 19 — budowa komponentów UI.
-- `TypeScript` — typowanie i bezpieczeństwo kodu.
-- `Tailwind CSS` — stylizacja interfejsu.
+## Stack
+- `Next.js 16` - routing, renderowanie stron i endpoint API.
+- `React 19` - komponenty interfejsu.
+- `TypeScript` - typowanie domeny i kontraktów danych.
+- `Tailwind CSS` - stylowanie UI.
+- `lucide-react` - minimalistyczna ikonografia.
+- `@google/generative-ai` - integracja z Gemini.
+- `Supabase REST API` - opcjonalny zapis wygenerowanych ciekawostek AI.
+- `Vercel` - hosting i automatyczny deploy po pushu.
 
-## Wybór technologii
-- Next.js zapewnia łatwą konfigurację routingu, API oraz wsparcie dla serwerowego renderowania.
-- TypeScript minimalizuje błędy związane z typami i ułatwia rozwój.
-- Tailwind CSS upraszcza szybkie tworzenie interfejsu bez dodatkowego CSS.
+## Uzasadnienie Wyborów
+- Next.js pozwala utrzymać frontend, routing i backend API w jednym repozytorium.
+- TypeScript zmniejsza ryzyko niespójności danych.
+- Tailwind CSS ułatwia szybkie iteracje UI bez osobnego systemu CSS.
+- Supabase REST API nie wymaga dodatkowego klienta npm i działa po stronie serwera.
+- Vercel upraszcza wdrożenie oraz konfigurację zmiennych środowiskowych.
 
-## Ograniczenia technologiczne
-- Aplikacja obecnie nie korzysta z bazy danych.
-- Zawartość jest przechowywana lokalnie w pliku `data/facts.ts`.
-- Integracja AI wymaga środowiskowej zmiennej `GOOGLE_AI_KEY`.
+## Ograniczenia Technologiczne
+- Gemini wymaga zmiennej `GOOGLE_AI_KEY`.
+- Trwały zapis AI wymaga `SUPABASE_URL` i `SUPABASE_SERVICE_ROLE_KEY`.
+- Bez Supabase ciekawostki AI są dostępne tylko w bieżącym stanie UI.
+- Brak panelu admina oznacza, że statyczne fakty są edytowane w `data/facts.ts`.
 
-## Konwencje projektowe
-- Dane muszą przechodzić walidację poprzez `lib/validation.ts`.
-- Każdy komponent powinien być typowany w oparciu o `domain/fact.ts`.
-- Interfejsy powinny być proste i czytelne, bez nadmiernych zależności.
+## Konwencje Projektowe
+- Każda funkcjonalność ma plan w `docs/plans/PLAN_*.md`.
+- Po implementacji aktualizujemy `implemented_plans.md` i `implemented_features.md`.
+- Model faktu jest definiowany w `domain/fact.ts`.
+- Dane statyczne muszą przechodzić walidację z `lib/validation.ts`.
+- Slugi faktów są małymi literami, z myślnikami i bez polskich znaków.
+- Widoczne teksty w UI są po polsku i bez artefaktów kodowania.
+
+## Komendy Kontrolne
+```bash
+npm.cmd run lint
+npm.cmd test
+npm.cmd run build
+```

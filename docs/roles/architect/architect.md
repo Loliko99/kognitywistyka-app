@@ -1,15 +1,25 @@
 # Architect
 
-## Decyzje techniczne
-- Next.js App Router do routingu i API.
-- Lokalna baza `data/facts.ts` jako podstawowy magazyn treści.
-- API AI jako opcjonalna warstwa generowania faktów.
+## Decyzje Techniczne
+- Next.js App Router obsługuje stronę główną, dynamiczne podstrony faktów i endpoint API.
+- `data/facts.ts` jest źródłem prawdy dla statycznych ciekawostek.
+- `/api/fact` izoluje integrację Gemini po stronie serwera.
+- Supabase jest opcjonalnym mechanizmem trwałego zapisu faktów AI.
+- Dynamiczne `params` w Next.js 16 są obsługiwane asynchronicznie.
 
-## Modele systemu
-- Stateless frontend renderujący dane z `lib/facts.ts`.
-- Backend API generujące JSON faktu lub zwracające błąd.
-- Klient obsługujący ladowanie i fallback if AI fails.
+## Modele Systemu
+- `Fact` - podstawowy model ciekawostki.
+- `Category` - jawna lista kategorii.
+- `GeneratedFactInput` - dane generowane przez AI przed przypisaniem trwałego `id`.
+- `StoredGeneratedFact` - fakt AI zapisany w Supabase.
 
 ## Integracje
-- `@google/generative-ai` do opcjonalnego żądania generowania faktu.
-- `next/link` i dynamiczny routing dla podstron faktów.
+- Gemini przez `@google/generative-ai`.
+- Supabase REST API przez `fetch`.
+- Vercel jako środowisko produkcyjne.
+
+## Ryzyka
+- Brak lub błędny `GOOGLE_AI_KEY`.
+- Niepoprawny JSON z Gemini.
+- Brak Supabase dla trwałych linków AI.
+- Niespójność dokumentacji SDD po szybkich zmianach UI.
